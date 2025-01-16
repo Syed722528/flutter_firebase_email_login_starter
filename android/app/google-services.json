@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "889430292983",
+    "project_id": "flutter-firebase-email-l-8f874",
+    "storage_bucket": "flutter-firebase-email-l-8f874.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889430292983:android:a65e54e71874532efc96f2",
+        "android_client_info": {
+          "package_name": "com.example.flutter_firebase_email_login_starter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy_Yu510riXJqvLtE1XE4lGhpRmMNbny4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
