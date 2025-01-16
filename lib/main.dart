@@ -1,6 +1,6 @@
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
-import 'package:simplelogin/services/login_or_signup.dart';
+import 'package:flutter_firebase_email_login_starter/services/login_or_signup.dart';
 
 void main(){
   runApp(MyApp());
