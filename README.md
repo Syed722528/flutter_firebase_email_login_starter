@@ -26,12 +26,12 @@ _Add screenshots of your app here to showcase the interface._
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/Syed722528/flutter_firebase_email_login_starter.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd your-repo-name
+   cd flutter_firebase_email_login_starter
    ```
 
 3. Install dependencies:

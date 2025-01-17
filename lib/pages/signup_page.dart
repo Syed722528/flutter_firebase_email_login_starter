@@ -1,6 +1,6 @@
-
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_email_login_starter/services/firebase_auth.dart';
 import 'package:flutter_firebase_email_login_starter/utils/validators.dart';
 
 class SignupPage extends StatefulWidget {
@@ -18,8 +18,24 @@ class _SignupPageState extends State<SignupPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _showPassword = false;
   bool _showConfirmPassword = false;
+  final AuthService _authService = AuthService();
+  String _message = '';
 
-  void _signIn() {}
+  Future<void> _signUp() async {
+    final email = _email.text.trim();
+    final password = _password.text.trim();
+    String? result = await _authService.signUp(email, password);
+    if (result == "Sign up successful!") {
+      String? emailResult = await _authService.sendEmailVerification();
+      setState(() {
+        _message = "$result\n$emailResult";
+      });
+    }else{
+      setState(() {
+        _message = result!;
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -128,7 +144,7 @@ class _SignupPageState extends State<SignupPage> {
           ElevatedButton(
             onPressed: () {
               if (_formKey.currentState!.validate()) {
-                _signIn();
+                _signUp();
               }
             },
             style: ElevatedButton.styleFrom(
@@ -154,7 +170,8 @@ class _SignupPageState extends State<SignupPage> {
                         color: Colors.blue, fontWeight: FontWeight.bold),
                   )),
             ],
-          )
+          ),
+          Text(_message, style: TextStyle(color: Colors.red)),
         ],
       ),
     );
