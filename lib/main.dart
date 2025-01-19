@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
         home: AuthGate(),
         routes: {
           '/homePage': (context) => const HomePage(),
-          '/loginOrSignup':(context)=>const LoginOrSignup(),
+          '/loginOrSignup': (context) => const LoginOrSignup(),
+          '/auth': (context) => const AuthGate(),
         },
       ),
     );

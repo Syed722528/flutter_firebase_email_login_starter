@@ -8,9 +8,32 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AuthService firebaseAuth = AuthService();
 
-    return Scaffold(appBar: AppBar(actions: [IconButton(onPressed: (){
-firebaseAuth.logout();
-Navigator.pushNamed(context, '/loginOrSignup');
-    }, icon: Icon(Icons.login_outlined))],),);
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purpleAccent,
+        title: Text('Home Page'),
+        centerTitle: true,
+      ),
+      drawer: Drawer(),
+      body: Center(
+        child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white,
+              iconColor: Colors.white,
+              shape: RoundedRectangleBorder(),
+              animationDuration: Duration(seconds: 3),
+              shadowColor: Colors.grey,
+              enableFeedback: true,
+              elevation: 5,
+            ),
+            onPressed: () {
+              firebaseAuth.logout();
+              Navigator.pushNamed(context, '/auth');
+            },
+            label: Text('Log out'),
+            icon: Icon(Icons.login_outlined)),
+      ),
+    );
   }
 }

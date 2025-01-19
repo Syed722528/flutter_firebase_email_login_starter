@@ -1,7 +1,10 @@
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_email_login_starter/services/firebase_auth.dart';
+import 'package:flutter_firebase_email_login_starter/services/login_or_signup.dart';
 import 'package:flutter_firebase_email_login_starter/utils/validators.dart';
+
+import '../widgets/custom_button.dart';
 
 class SignupPage extends StatefulWidget {
   final void Function()? onPressed;
@@ -19,22 +22,18 @@ class _SignupPageState extends State<SignupPage> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
   final AuthService _authService = AuthService();
+
+  // To display message to the user either error or success. Alert Dialog or Snack bar can be used
   String _message = '';
 
   Future<void> _signUp() async {
     final email = _email.text.trim();
     final password = _password.text.trim();
     String? result = await _authService.signUp(email, password);
-    if (result == "Sign up successful!") {
-      String? emailResult = await _authService.sendEmailVerification();
-      setState(() {
-        _message = "$result\n$emailResult";
-      });
-    }else{
-      setState(() {
-        _message = result!;
-      });
-    }
+
+    setState(() {
+      _message = result!;
+    });
   }
 
   @override
@@ -141,22 +140,13 @@ class _SignupPageState extends State<SignupPage> {
             validator: (confirmPassword) => Validators.validateConfirmPassword(
                 _password.text, confirmPassword),
           ),
-          ElevatedButton(
+          CustomButton(
+            buttonText: 'Create Account',
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 _signUp();
               }
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(),
-              animationDuration: Duration(seconds: 3),
-              shadowColor: Colors.grey,
-              enableFeedback: true,
-              elevation: 5,
-            ),
-            child: Text('Create Account'),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

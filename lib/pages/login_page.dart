@@ -1,5 +1,8 @@
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_email_login_starter/pages/home_page.dart';
+import 'package:flutter_firebase_email_login_starter/utils/validators.dart';
+import 'package:flutter_firebase_email_login_starter/widgets/custom_button.dart';
 
 import '../services/firebase_auth.dart';
 
@@ -16,9 +19,14 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _password = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool showPassword = false;
+
+  // Creating instance of Auth Service class
   final AuthService _authService = AuthService();
 
+  // To display message to the user either error or success. Alert Dialog or Snack bar can be used
   String _message = '';
+
+  //Function to sign in user
   void _signIn() async {
     final email = _email.text.trim();
     final password = _password.text.trim();
@@ -63,8 +71,8 @@ class _LoginPageState extends State<LoginPage> {
       key: _formKey,
       child: Container(
         padding: EdgeInsets.all(20.rs),
-        height: 400.rh,
-        width: 350.rw,
+        height: 400.rh, // Responsive height
+        width: 350.rw, // Responsive width
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: SingleChildScrollView(
@@ -87,12 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: 'Enter your Email',
                   label: Text('Email'),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Email Required';
-                  }
-                  return null;
-                },
+                validator: (email) => Validators.validateEmail(email),
               ),
               TextFormField(
                 obscureText: !showPassword,
@@ -109,29 +112,18 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: 'Enter your password',
                   label: Text('Password'),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Password Required';
-                  }
-                  return null;
-                },
+                validator: (password) => Validators.validatePassword(password),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _signIn();
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(),
-                    animationDuration: Duration(seconds: 3),
-                    shadowColor: Colors.grey,
-                    enableFeedback: true,
-                    elevation: 5),
-                child: Text('Login'),
-              ),
+              CustomButton(
+                  buttonText: 'Login',
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      _signIn();
+                      if (_message == 'Login successful!') {
+                        Navigator.pushNamed(context, '/homePage');
+                      }
+                    }
+                  }),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

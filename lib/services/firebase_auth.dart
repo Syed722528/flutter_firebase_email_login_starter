@@ -8,7 +8,9 @@ class AuthService {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      return "Sign up successful!";
+      final emailResult   = await sendEmailVerification();
+      _auth.signOut(); // Sign out user. FirebaseAuth function automatically signs in the User.
+      return "Sign up successful!\n$emailResult";
     } catch (e) {
       return _handleError(e);
     }
@@ -35,7 +37,13 @@ class AuthService {
   Future<String?> login(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-      return "Login successful!";
+      if (_auth.currentUser!.emailVerified) {
+        return "Login successful!";
+      }else{
+        _auth.signOut();
+        return "Email not verified";
+      }
+      
     } catch (e) {
       return e.toString();
     }
@@ -72,5 +80,11 @@ class AuthService {
       // Handle other types of exceptions
       return "An unknown error occurred.";
     }
+  }
+
+  //---------------------Method to get current user------------------------//
+
+  User? getCurrentUser() {
+    return _auth.currentUser;
   }
 }

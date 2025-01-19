@@ -14,7 +14,7 @@ class LoginOrSignup extends StatefulWidget {
 }
 
 class _LoginOrSignupState extends State<LoginOrSignup> {
-  bool _isLoginPage = false;
+  bool _isLoginPage = true;
 
   void togglePage() {
     setState(() {
@@ -41,7 +41,7 @@ class _LoginOrSignupState extends State<LoginOrSignup> {
         child: SafeArea(
           child: Column(
             children: [
-              ButtonGroup(
+              ButtonGroup( // Buttons on the top of the pages. Selected page is darker
                   isLoginSelected: _isLoginPage,
                   onLoginPressed: () {
                     setState(() {

@@ -15,8 +15,8 @@ class _AuthGateState extends State<AuthGate> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FirebaseAuth.instance.currentUser != null
-          ? const HomePage()
-          : LoginOrSignup(),
+          ? const HomePage() // Manually show HomePage if user is logged in
+          : const LoginOrSignup(),
     );
   }
 }
