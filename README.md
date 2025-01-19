@@ -18,21 +18,8 @@ A beginner-friendly Flutter project demonstrating Firebase Authentication using 
 
 ## Screenshots
 
-![Login Screen] (sample/samplePic2.png)
-![SignUp Screen] (sample/samplePic1.png)
-
----
-
-## Demo Video
-
-<video width="100%" controls>
-  <source src="sample/sampleVideo.webm" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-<video width="100%" controls>
-  <source src="sample/sampleVideo2.webm" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="sample/samplePic2.png" alt="Login Page">
+<img src="sample/samplePic1.png" alt="Login Page">
 
 ---
 
