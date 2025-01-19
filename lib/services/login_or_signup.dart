@@ -16,7 +16,7 @@ class LoginOrSignup extends StatefulWidget {
 class _LoginOrSignupState extends State<LoginOrSignup> {
   bool _isLoginPage = true;
 
-  void togglePage() {
+  void togglePage() { // To toggle between pages smoothly
     setState(() {
       _isLoginPage = !_isLoginPage;
     });
@@ -25,10 +25,10 @@ class _LoginOrSignupState extends State<LoginOrSignup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: buildAnimatedBackground(),
+      body: buildAnimatedBackground(), 
     );
   }
-
+ // Animated background
   AnimateGradient buildAnimatedBackground() {
     return AnimateGradient(
         primaryColors: primaryColors,
@@ -41,7 +41,7 @@ class _LoginOrSignupState extends State<LoginOrSignup> {
         child: SafeArea(
           child: Column(
             children: [
-              ButtonGroup( // Buttons on the top of the pages. Selected page is darker
+              ButtonGroup( // Buttons on the top of the pages. Selected page is dark in color
                   isLoginSelected: _isLoginPage,
                   onLoginPressed: () {
                     setState(() {

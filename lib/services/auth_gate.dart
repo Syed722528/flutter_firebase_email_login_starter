@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase_email_login_starter/pages/home_page.dart';
 import 'package:flutter_firebase_email_login_starter/services/login_or_signup.dart';
 
+// This widget is to make sure user doesn't have to login again after the app is closed
+
 class AuthGate extends StatefulWidget {
   const AuthGate({super.key});
 

@@ -1,7 +1,6 @@
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_email_login_starter/services/firebase_auth.dart';
-import 'package:flutter_firebase_email_login_starter/services/login_or_signup.dart';
 import 'package:flutter_firebase_email_login_starter/utils/validators.dart';
 
 import '../widgets/custom_button.dart';

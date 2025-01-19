@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
               Navigator.pushNamed(context, '/auth');
             },
             label: Text('Log out'),
-            icon: Icon(Icons.login_outlined)),
+            icon: Icon(Icons.logout)),
       ),
     );
   }

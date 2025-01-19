@@ -9,7 +9,7 @@ import 'services/auth_gate.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform); // Initializing firebase
   runApp(MyApp());
 }
 
@@ -18,13 +18,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexify(
+    return Flexify( // For reponsive layout
       designHeight: 912,
       designWidth: 412,
       app: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: AuthGate(),
-        routes: {
+        routes: { // Defined routes names
           '/homePage': (context) => const HomePage(),
           '/loginOrSignup': (context) => const LoginOrSignup(),
           '/auth': (context) => const AuthGate(),

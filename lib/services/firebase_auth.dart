@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
+// Service class for Firebase Authentication. Add more as per your requirement
+
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -9,7 +11,7 @@ class AuthService {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       final emailResult   = await sendEmailVerification();
-      _auth.signOut(); // Sign out user. FirebaseAuth function automatically signs in the User.
+      _auth.signOut(); // Sign out user. FirebaseAuth create user function automatically signs in the User.
       return "Sign up successful!\n$emailResult";
     } catch (e) {
       return _handleError(e);
@@ -40,7 +42,7 @@ class AuthService {
       if (_auth.currentUser!.emailVerified) {
         return "Login successful!";
       }else{
-        _auth.signOut();
+        _auth.signOut(); // Sign in func also sign's in the user.
         return "Email not verified";
       }
       

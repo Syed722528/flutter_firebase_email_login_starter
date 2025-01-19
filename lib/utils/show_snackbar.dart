@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// This can be used instead of showing red text to user regarding the auth messages
+
+
 void showSnackBar(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
