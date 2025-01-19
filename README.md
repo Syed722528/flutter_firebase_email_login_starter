@@ -18,8 +18,8 @@ A beginner-friendly Flutter project demonstrating Firebase Authentication using 
 
 ## Screenshots
 
-<img src="sample/samplePic2.png" alt="Login Page" width="200" height ="300">
-<img src="sample/samplePic1.png" alt="Login Page" width="200" height ="300">
+<img src="sample/samplePic2.png" alt="Login Page" width="190" height ="320">
+<img src="sample/samplePic1.png" alt="Login Page" width="190" height ="320">
 
 ---
 
